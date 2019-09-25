@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>output标签</title>
+</head>
+<body>
+  <!-- output 标签定义不同类型的输出，比如脚本的输出 -->
+  <!-- 新属性：
+  for： element_id 定义输出域相关的一个或多个元素
+  form：form_id    定义输入字段所属的一个或者多个表单
+  name：name       定义对象的唯一名称 -->
+  <!-- 作用：输出值。和input一起使用，使用for属性绑定输入的元素，使用output输出 -->
+  <form action="" oninput="x.value = parseInt(a.value) + parseInt(b.value)">
+    <input type="range" id="a" value="50">+
+    <input type="number" id="b" value="50">=
+    <output name="x" for="a b"></output>
+  </form>
+</body>
+</html>
