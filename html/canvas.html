@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas</title>
+</head>
+<body onload="draw('canvas')">
+  <canvas id="canvas" width="600px" height="400px"></canvas>
+  <script>
+    function draw(id) {
+      const canvas = document.getElementById(id)
+      if (canvas === null) {
+        return
+      }
+      const context = canvas.getContext('2d'); // 获取上下文
+      context.fillStyle = '#FF99CC'; // 填充颜色
+      context.fillRect(0, 0, 600, 400); // 填充矩形坐标（x,y,width,height）
+
+      /*
+      // 绘制矩形
+      context.fillStyle = 'red';
+      context.strokeStyle = 'blue'; // 边框颜色
+      context.lineWidth = 1; // 线宽（边框宽度）
+      context.fillRect(50, 50, 100, 100); // 绘制填充矩形
+      context.strokeRect(50, 50, 100, 100); // 绘制边框矩形
+      context.clearRect(0, 50, 50, 50); // 擦除指定区域矩形
+      */
+
+      /*
+      // 绘制圆形
+      let n = 0;
+      for (let i = 0; i < 10; i++) {
+        context.beginPath(); // 开始创建路径
+        context.arc(i * 25, i * 25, i * 10, 0, Math.PI * 2, true); // (x, y, radius半径, startAngle开始角度, endAngle, antiClockwise是否为逆时针旋转)
+        context.closePath(); // 关闭路径，若不关闭的话，一开始创建的也会一直存在
+        context.fillStyle = 'rgba(255, 0, 0, 0.25)';
+        // context.fill(); // 填充图形
+        context.stroke(); // 绘制图形边框
+      }
+      */
+
+      // 绘制直线
+      context.beginPath();
+      context.fillStyle = '#99FFCC';
+      context.strokeStyle = '#CCFF99';
+      // context.moveTo(50, 200);
+      context.lineTo(400, 400);
+      context.closePath();
+      context.fill();
+      context.stroke();
+    }
+  </script>
+</body>
+</html>
