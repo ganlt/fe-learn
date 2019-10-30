@@ -41,15 +41,50 @@
       }
       */
 
+      /*
       // 绘制直线
-      context.beginPath();
-      context.fillStyle = '#99FFCC';
-      context.strokeStyle = '#CCFF99';
-      // context.moveTo(50, 200);
+      context.moveTo(50, 50);
       context.lineTo(400, 400);
-      context.closePath();
-      context.fill();
       context.stroke();
+      */
+
+      // 贝济埃曲线
+      // context.bezierCurveTo(50, 50, 100, 00, 300, 100)
+
+      // 二次样条曲线
+
+      /*
+      // 线性渐变
+      let grd = context.createLinearGradient(50, 30, 300, 200);
+      grd.addColorStop(0, '#ffffff');
+      grd.addColorStop(1, '#000000');
+      context.fillStyle = grd;
+      context.fillRect(50, 30, 300, 300);
+      */
+
+      // 径向渐变
+      // let grd = context.createRadialGradient(400, 0, 0, 400, 0, 400);
+      // grd.addColorStop(0.3, '#ff0000');
+      // grd.addColorStop(0.7, '#00ff00');
+      // grd.addColorStop(1, '#0000ff');
+      // context.fillStyle = grd;
+      // context.fillRect(50, 30, 300, 300);
+
+      /*
+      // 图像
+      let image = new Image();
+      image.src = '/image/background.png';
+      console.log(image)
+      context.drawImage(image, 50, 50);
+      */
+
+      // 绘制文字
+      context.fillStyle = '#99FFCC';
+      context.font = '微软雅黑 24px';
+      context.textBaseLine = 'top';
+      context.fillText('我是甘琳彤', 50, 50);
+      context.font = 'bold 64px sans-serif';
+      context.strokeText('我是甘琳彤', 50, 200);
     }
   </script>
 </body>
