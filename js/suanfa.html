@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>闭包</title>
+  <style>
+    .margin {
+      margin: 20px;
+    }
+    .inline {
+      width: 200px;
+      /* height: 200px; */
+      display: inline-block;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div style="vertical-align: bottom;">
+    <div class="inline">ddd
+    </div>
+    <input type="text" name="" id="">
+  </div>
+    
+  <script>
+    // function repeat (func, times, wait) {
+    //   return function() {
+    //     for (let i = 0; i < times; i++) {
+    //       setTimeout((function(i) {
+    //           console.log(i)
+    //           console.log(new Date())
+    //           func()
+    //         })(i),wait)
+    //       // (function(i) {
+    //       //   setTimeout(() => {
+    //       //     console.log(i)
+    //       //     console.log(new Date())
+    //       //     func()},
+    //       //   wait)
+    //       // })(i);
+    //     }
+    //   }
+    // }
+    // function say() {
+    //   const date = new Date()
+    //   console.log('111\n', date)
+    // }
+    // const a = repeat(say, 2, 2000)
+    // a()
+    
+    // class Animal {
+    //   constructor(name) {
+    //     this.name = name
+    //   }
+    //   say() {}
+    // }
+    // class Dog extends Animal {
+    //   constructor(name) {
+    //     super(name);
+    //   }
+    //   say() {
+    //     console.log(this.name + ' say wangwang')
+    //   }
+    // }
+    // const a = new Animal('xx')
+    // const b = new Dog('doggg')
+    // console.log(a.name)
+    // a.say()
+    // console.log(b.name)
+    // b.say()
+
+    // function fn(n) {
+    //   let arr = []
+    //   for (let i = 0; i < n; i++) {
+    //     const num = parseInt(Math.random() * 100)
+    //     const is = arr.map((val) => {
+    //       if (val === num) {
+    //         return false
+    //       }
+    //       return true
+    //     })
+    //     if (num >= 2 && num <= 32 && is) {
+    //       arr.push(num)
+    //     } else {
+    //       i--
+    //     }
+    //   }
+    //   return arr
+    // }
+    // const a = fn(10)
+    // // console.log(a)
+
+    // class Ponit {
+    //   constructor(x, y, coor) {
+    //     this.x = x
+    //     this.y = y
+    //     this.coor = `{x: ${this.x}; y: ${this.y}}`
+    //   }
+    //   move(a, b) {
+    //     let that = {...this}
+    //     that.x += a
+    //     that.y += b
+    //     that.coor = `{x: ${that.x}; y: ${that.y}}`
+    //     return that
+    //   }
+    // }
+    // let point = new Ponit(100, 100)
+    // let anotherPoint = point.move(-10, 10)
+    // console.log(anotherPoint.coor)
+    // console.log(point.coor)
+
+    // class Point {
+    //   constructor(x, y) {
+    //     this.x = x
+    //     this.y = y
+    //   }
+    //   get coor() {
+    //     return {
+    //       x: this.x,
+    //       y: this.y
+    //     }
+    //   }
+    //   move (a, b) {
+    //     return new Point(this.x + a, this.y + b)
+    //   }
+    // }
+    // let point = new Point(100, 100)
+    // let anotherPoint = point.move(-10, 10)
+    // console.log(anotherPoint.coor)
+    // console.log(point.coor)
+
+    // function proxy(a, b) {
+    //   Object.defineProperty(a, 'name', {
+    //     set(val) {
+    //       b.name = val
+    //     }
+    //   })
+    // }
+    // var Animal = {}
+    // var Cat = {
+    //   name: 'Hoe'
+    // }
+    // proxy(Animal, Cat)
+    // Animal.name = 'Tom'
+    // console.log(Cat.name)
+
+      // class GPromise {
+      //   constructor(excutor) {
+      //     this.state = 'pending'
+      //     this.value = undefined
+      //     this.reson = undefined
+      //     this.error = false
+
+      //     let resolve = (value) => {
+      //       if (this.state === 'pending') {
+      //           this.state = 'fulfilled'
+      //           this.value = value
+      //       }
+      //     }
+      //     let reject = (reson) => {
+      //       if (this.state === 'pending') {
+      //         this.state = 'rejected'
+      //         this.reson = reson
+      //       }
+      //     }
+      //     excutor(resolve, reject)
+      //   }
+      //   then(onFulfilled, onRejected) {
+      //     return new GPromise((resolve, reject) => {
+      //       // debugger
+      //       if (this.state === 'fulfilled') {
+      //         setTimeout(()=> {
+      //           onFulfilled(this.value)
+      //           resolve()
+      //         }, 0)
+      //       } else if (this.state === 'rejected') {
+      //         setTimeout(()=> {
+      //           onRejected(this.reson)
+      //           reject();
+      //         }, 0)
+      //       }
+      //     })
+      //   }
+      //   catch() {
+
+      //   }
+      // }
+      // let promise = new GPromise(function(resolve, reject) {
+      //   console.log('Promise');
+      //   resolve();
+      //   // reject();
+      // });
+
+      // promise.then(function(val) {
+      //   console.log('resolved.');
+      // },(err) => {
+      //   console.log('rejected.')
+      // })
+      //   .then(() => {
+      //   console.log('hhhh')
+      // }, () => {
+      //   console.log('hhhhrejected')
+      // })
+      //   .then(() => {
+      //   console.log('xxxx')
+      // }, ()=> {
+      //   console.log('xxxrejected')
+      // });
+
+      // console.log('Hi!');
+/**
+ * 要求设计 LazyMan 类，实现以下功能
+ * LazyMan('Tony');
+ * Hi I am Tony
+ *
+ * LazyMan('Tony').sleep(10).eat('lunch');
+ * Hi I am Tony
+ * 等待了10秒...
+ * I am eating lunch
+ *
+ * LazyMan('Tony').eat('lunch').sleep(10).eat('dinner');
+ * Hi I am Tony
+ * I am eating lunch
+ * 等待了10秒...
+ * I am eating diner
+ *
+ * LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(5).sleep(10).eat('junk food');
+ * Hi I am Tony
+ * 等待了5秒...
+ * I am eating lunch
+ * I am eating dinner
+ * 等待了10秒...
+ * I am eating junk food
+ */
+      // function repeat (func, times, wait) {
+      //   return function() {
+      //     console.log(func, times, wait)
+      //     for(let i = 0; i < times; i++) {
+      //         setTimeout(()=>{
+      //           func(str);
+      //         }, wait*i)
+      //     }
+      //   }
+      // }
+      // function fn(str) {
+      //   console.log(str)
+      // }
+      // var repeatedFun = repeat(fn, 10, 5000);
+      // repeatedFun("Helloword");
+
+//       function repeat(func, times, wait) {
+//   let count = 0;
+//   function promise() {
+//     return new Promise(resolve => {
+//       setTimeout(()=> {
+//         resolve()
+//       }, wait)
+//     })
+//   }  
+//   return function start(str) {
+//       promise().then(() => {
+//         func(str)
+//         count++
+        
+//     if (count < times) {
+//       start(str)
+//   }
+//       })
+//     }
+// }
+// var repeatedFun = repeat(console.log, 3, 2000);
+// repeatedFun("hellworld");
+
+// const arr = [2,4,4,5]
+
+// caculate(arr);
+
+// function caculate(arr) {
+//   let countArr = []
+//   for(let i = 0; i < arr.length; i++) {
+//     let count = 0
+//     for(let j = 0; j < arr.length; j++) {
+//       if(arr[i] === arr[j]) {
+//         count++
+//       }
+//     }
+//     let a = {}
+//     a[arr[i]] = count
+//     countArr.push(a)
+//   }
+//   console.log(countArr)
+// }
+// let arr = [24,13,3,25,67,20]
+// function gsort(arr) {
+//   let temp = arr[0]
+//   let leftArr = []
+//   let rightArr = []
+//   for (let i = 0;i<arr.length;i++) {
+    
+//     if(arr[i] > temp) {
+//       rightArr.push(arr[i])
+//     } else {
+//       leftArr.push(arr[i])
+//     }
+//   }
+//   // arr.forEach(element => {
+//   //   if(element > temp) {
+//   //     rightArr.push(element)
+//   //   } else {
+//   //     leftArr.push(element)
+//   //   }
+//   // });
+//   return gsort(leftArr).concat(temp, gsort(rightArr))
+// }
+// let myQuickSort = (array) => {
+//     if (array.length < 2) return array;
+//     let leftArray = [];
+//     let rightArray = [];
+//     let baseDigit = array[0];
+//     array.forEach(element => {
+//         if (element < baseDigit) {
+//             leftArray.push(element);
+//         } else if (element > baseDigit) {
+//             rightArray.push(element);
+//         }
+//     });
+//     return myQuickSort(leftArray).concat(baseDigit, myQuickSort(rightArray))
+// }
+// myQuickSort(arr)
+// console.log(myQuickSort(arr))
+// let arr = [24,13,3,25,67,20]
+
+// let quickSort = (array) => {
+//     if (array.length < 2) return array;
+//   let baseNum = array[0]
+//   let leftArr = []
+//   let rightArr = []
+//   array.forEach(ele => {
+//     if(ele < baseNum) {
+//       leftArr.push(ele)
+//     } else if (ele > baseNum) {
+//       rightArr.push(ele)
+//     }
+//   })
+//   return quickSort(leftArr).concat(baseNum, quickSort(rightArr))
+// }
+
+// console.log(quickSort(arr))
+// let str = '1, -2, 3, 10, -4, 7, 2, -5';
+
+// let array = str.split(',');
+// let arr = array.map(Number)
+
+// let maxNum = 0;
+//   let maxArr = [];
+// function caculate(arr) {
+//   let sum = 0;
+//   let sumArr = [];
+//   if (arr.length >= 2) {
+//     debugger
+//     for(let i = 0; i < arr.length; i++) {
+//       sum += arr[i];
+//       sumArr.push(arr[i])
+//     }
+//   } else if(arr.length === 1) {
+//     sum = arr[0]
+//     sumArr = [...arr]
+//   } else {
+//     sum = 0
+//     sumArr = [...arr]
+//   }
+
+//   if (sum > maxNum) {
+//     maxNum = sum
+//     maxArr = [...sumArr];
+//   }
+//   if (arr.length >= 2) {
+//   caculate(arr.slice(1))
+
+//   }
+//   return maxNum;
+// }
+
+// let res = caculate(arr);
+// console.log(res);
+// 数组去重
+// let arr = [2, 4, 5, 23, 24, 4, 2, 26];
+
+// let deduplication = (arr) => {
+//   debugger
+//   arr.forEach(element => {
+//   debugger
+//     let temp = element
+//     arr.forEach((ele, i) => {
+      
+//   debugger
+//       if (ele === temp) {
+//         arr.slice(i, i+1)
+//       }
+//     })
+//   });
+//   return arr
+// }
+
+// const a = deduplication(arr)
+// console.log(a)
+  </script>
+</body>
+</html> 

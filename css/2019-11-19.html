@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>实现一个宽高比为4:3的矩形</title>
+  <style>
+    .box {
+      background-color: grey;
+      width: 500px;
+      height: 500px;
+    }
+    /* .content {
+      background-color: #ff99cc;
+      width: 400px;
+      height: 300px;
+      margin: 0 auto;
+    } */
+    /* margin,padding top/left/right/bottom 设置百分比，都是基于父元素宽度来计算的 */
+    /* 设置padding-top/bottom：60%相当于设置height的值为(父元素width*60%) */
+    .content {
+      background-color: #ff99cc;
+      width: 80%;
+      margin-left: 10%;
+      padding-bottom: 60%;
+      position: relative;
+    }
+    .content div {
+      position: absolute;
+    }
+    /* .content {
+      background-color: #ff99cc;
+      width: 80%;
+      margin-left: 10%;
+      height: 60%;
+    } */
+  </style>
+</head>
+<body">
+  <div class="box">
+    <div class="content"><div>fdaflajfa</div>
+
+    </div>
+  </div>
+  <!-- <canvas id="canvas" width="500px" height="500px"></canvas> -->
+  <script>
+    function Canvas(id) {
+      const canvas = document.getElementById(id);
+      const context = canvas.getContext('2d');
+      context.fillStyle = '#ff99cc';
+      context.fillRect(0, 0, 400, 300);
+    }
+  </script>
+</body>
+</html>

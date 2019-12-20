@@ -3,6 +3,7 @@
 #### HTML
 1. [调用摄像头](https://github.com/jinshuilinxi/fe-learn/blob/master/html/dispactchCamera.html)
 2. [output标签](https://github.com/jinshuilinxi/fe-learn/blob/master/html/output.html)
+3. [canvas](https://github.com/jinshuilinxi/fe-learn/blob/master/html/canvas.html)
 #### CSS
 1. [css tips](https://github.com/jinshuilinxi/fe-learn/blob/master/css/index.css)
 #### JavaScript
